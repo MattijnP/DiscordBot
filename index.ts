@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import {allCommands} from "./commands";
 import {FriendlyFire} from "./services/FriendlyFire";
 import {Crit} from "./services/Crits";
+import {TrackedMessage} from "./services/MessageTracker";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ client.on('ready', () => {
     
     FriendlyFire.sync();
     Crit.sync();
+    TrackedMessage.sync();
 });
 
 client.on('interactionCreate', async (interaction: Interaction) => {
@@ -38,7 +40,7 @@ client.on('interactionCreate', async (interaction: Interaction) => {
     } catch (e) {
         console.error(e);
         // @ts-ignore
-        interaction.reply({content: 'There was an error executing this command!', ephemeral: true});
+        interaction.reply({content: '❌ There was an error executing this command!', ephemeral: true});
     }
     
     console.log(`${interaction.user.username} executed /${interaction.commandName}`);

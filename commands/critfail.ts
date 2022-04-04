@@ -1,6 +1,7 @@
 import {ICommand} from "./ICommand";
 import {SlashCommandBuilder} from "@discordjs/builders";
 import {logCrit} from "../services/Crits";
+import {updateTrackedScoreboard} from "../services/Scoreboard";
 
 
 async function execute(interaction: any) {
@@ -17,9 +18,12 @@ async function execute(interaction: any) {
     const name = target.displayName;
     
     await logCrit(guild, id, new Date(), false);
-    
+
+    const board = await updateTrackedScoreboard(interaction);
+    const seeBoard = `See the [updated scoreboard](<${board.url}>).`;
+
     console.log(`${name} with id ${id} on ${guild} has a critfail!`);
-    interaction.reply(`Logged ${target}'s critfail.`);
+    interaction.reply(`Logged ${target}'s critfail.\n${seeBoard}`);
 }
 
 export const CritFailCommand: ICommand = {
