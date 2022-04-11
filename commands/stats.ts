@@ -12,7 +12,7 @@ async function execute(interaction: any) {
     
     const replyMessage = `The [pinned message](<${message.url}>) was updated.`;
     
-    const reply = await interaction.reply({
+    await interaction.reply({
         content: replyMessage,
         ephemeral: true,
     });

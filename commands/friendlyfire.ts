@@ -36,7 +36,7 @@ async function execute(interaction: any) {
                              : `${aggressor} dealt ${damage} damage to ${victim}. ${remark}`;
     
     console.log(`${aggressor.displayName} dealt ${damage} damage to ${victim.displayName}.`);
-    interaction.reply(message + '\n' + seeBoard);
+    await interaction.reply(message + '\n' + seeBoard);
 }
 
 export const FriendlyFireCommand: ICommand = {

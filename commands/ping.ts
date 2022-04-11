@@ -14,4 +14,4 @@ export const PingCommand: ICommand = {
         .setName('ping')
         .setDescription('Replies with pong'),
     execute
-}
+};

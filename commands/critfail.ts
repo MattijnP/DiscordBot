@@ -23,7 +23,7 @@ async function execute(interaction: any) {
     const seeBoard = `See the [updated scoreboard](<${board.url}>).`;
 
     console.log(`${name} with id ${id} on ${guild} has a critfail!`);
-    interaction.reply(`Logged ${target}'s critfail.\n${seeBoard}`);
+    await interaction.reply(`👍 Logged ${target}'s critfail.\n${seeBoard}`);
 }
 
 export const CritFailCommand: ICommand = {

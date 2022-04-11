@@ -4,6 +4,7 @@ import {allCommands} from "./commands";
 import {FriendlyFire} from "./services/FriendlyFire";
 import {Crit} from "./services/Crits";
 import {TrackedMessage} from "./services/MessageTracker";
+import {reactToMessage} from "./services/Reactions";
 
 dotenv.config();
 
@@ -26,6 +27,10 @@ client.on('ready', () => {
     FriendlyFire.sync();
     Crit.sync();
     TrackedMessage.sync();
+});
+
+client.on('messageCreate', (message) => {
+    reactToMessage(message);
 });
 
 client.on('interactionCreate', async (interaction: Interaction) => {
