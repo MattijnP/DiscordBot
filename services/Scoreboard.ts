@@ -19,7 +19,8 @@ export async function getScoreboards(guild: Guild) {
     for (const row of critCounter) {
         const {rank, crit, critfail, user} = row;
 
-        const member = guild.members.cache.get(user);
+        const member = await guild.members.fetch(user);
+        
         const name = member ? member.displayName : '<deleted member>';
         critCounterTable.addRow(rank, name, crit, critfail);
     }
@@ -39,7 +40,8 @@ export async function getScoreboards(guild: Guild) {
     for (const row of friendlyFire) {
         const {rank, user, dealtSum, dealtCount, takenSum, takenCount} = row;
 
-        const member = guild.members.cache.get(user);
+        const member = await guild.members.fetch(user);
+        
         const name = member ? member.displayName : '<deleted member>';
         friendlyFireTable.addRow(rank, name, dealtSum, dealtCount + 'x', takenSum, takenCount + 'x');
     }
